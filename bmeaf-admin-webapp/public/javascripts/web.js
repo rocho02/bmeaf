@@ -1,7 +1,7 @@
 
 
 function sendMessage(message,value){
-    $.post( "/message", { message: message, value: value ? value: "" } );
+    $.post( "/api/message", { message: message, value: value ? value: "" } );
 }
 
 function sendStart() {
