@@ -23,14 +23,15 @@ router.get('/ping', function(req, res, next) {
 router.get('/start', function(req, res, next) {
     console.info('message:',req.body);
     motor.servoWrite(pulseWidth);
-    console.info('motor started', req.body);
-    //
-    // pulseWidth += increment;
-    // if (pulseWidth >= 2000) {
-    //     increment = -100;
-    // } else if (pulseWidth <= 1000) {
-    //     increment = 100;
-    // }
+    console.info('motor started');
+
+     pulseWidth += increment;
+     console.info('pulseWidth', pulseWidth, increment);
+    if (pulseWidth >= 2000) {
+       increment = -100;
+     } else if (pulseWidth <= 1000) {
+         increment = 100;
+     }
     res.json({message: 'started'});
 });
 
