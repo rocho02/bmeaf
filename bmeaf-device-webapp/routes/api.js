@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const Gpio = require('pigpio').Gpio;
 
-const motor = new Gpio(10, {mode: Gpio.OUTPUT});
+const motor = new Gpio(13, {mode: Gpio.OUTPUT});
 
 let pulseWidth = 1000;
 let increment = 100;
@@ -29,7 +29,7 @@ router.get('/start', function(req, res, next) {
      console.info('pulseWidth', pulseWidth, increment);
     if (pulseWidth >= 2000) {
        increment = -100;
-     } else if (pulseWidth <= 1000) {
+     } else if (pulseWidth <= 1000)
          increment = 100;
      }
     res.json({message: 'started'});
