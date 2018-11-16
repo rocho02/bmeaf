@@ -3,9 +3,9 @@ var router = express.Router();
 var request = require("request");
 var HttpStatus = require('http-status-codes');
 
-const restPath = 'http://localhost:3001/api/';
+const restPath = 'http://192.168.0.107:3001/api/';
 
-/* GET users listing. */
+/* GET users listing. */    
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
   res.json({'message': 'bmeaf-admin webapp '});
