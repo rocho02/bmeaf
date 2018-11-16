@@ -18,9 +18,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.set('etag', false);
+app.use(function(req, res, next) {
+    //delete all headers related to cache
+    req.headers['if-none-match'] = '';
+    req.headers['if-modified-since'] = '';
+    next();
+});
 app.use('/', indexRouter);
 app.use('/api', apiRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
