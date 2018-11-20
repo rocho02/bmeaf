@@ -31,8 +31,8 @@ router.get('/start', function(req, res, next) {
 
 
         motor.servoWrite(1000);
-/*    console.info('message:',req.body);
-    console.info('motor started');
+     console.info('message:',req.body);
+ /* console.info('motor started');
     console.info('pulseWidth', pulseWidth, increment);*/
 
     motor.servoWrite(1200);
@@ -52,7 +52,11 @@ router.get('/start', function(req, res, next) {
 /* GET stop feeding. */
 router.get('/stop', function(req, res, next) {
     console.info('message:',req.body);
-    res.json({message: 'stopped'});
+    /*res.json({message: 'stopped'});*/
+    motor.servoWrite(1000);
+    motor.servoWrite(1200);
+    sleep(2000);
+    motor.servoWrite(1000);
 
 });
 
