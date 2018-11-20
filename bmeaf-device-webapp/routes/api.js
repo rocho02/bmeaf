@@ -28,7 +28,7 @@ router.get('/start', function(req, res, next) {
      console.info('pulseWidth', pulseWidth, increment);
     if (pulseWidth >= 1000) {
        increment = -500;
-     } else if (pulseWidth <= 0){
+     } else if (pulseWidth <= 500){
          increment = 500;
      }
     res.json({message: 'started'});
