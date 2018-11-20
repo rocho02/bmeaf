@@ -4,8 +4,8 @@ const Gpio = require('pigpio').Gpio;
 
 const motor = new Gpio(13, {mode: Gpio.OUTPUT});
 
-let pulseWidth = 1500;
-let increment = 500;
+let pulseWidth = 1000;
+let increment = 1000;
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
@@ -27,9 +27,9 @@ router.get('/start', function(req, res, next) {
      pulseWidth += increment;
      console.info('pulseWidth', pulseWidth, increment);
     if (pulseWidth >= 2000) {
-       increment = -500;
-     } else if (pulseWidth <= 1500){
-         increment = 500;
+       increment = -1000;
+     } else if (pulseWidth <= 1000){
+         increment = 1000;
      }
     res.json({message: 'started'});
 });
