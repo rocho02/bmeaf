@@ -29,11 +29,12 @@ function sleep(milisecs){
 /* GET start feeding. */
 router.get('/start', function(req, res, next) {
 
-    console.info('message:',req.body);
-    motor.servoWrite(1000);
+
+        motor.servoWrite(1000);
+/*    console.info('message:',req.body);
     console.info('motor started');
-    console.info('pulseWidth', pulseWidth, increment);
-    sleep(1000);
+    console.info('pulseWidth', pulseWidth, increment);*/
+
     motor.servoWrite(1200);
     sleep(1000);
     motor.servoWrite(1000);
