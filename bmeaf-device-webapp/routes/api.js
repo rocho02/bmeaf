@@ -19,23 +19,33 @@ router.get('/ping', function(req, res, next) {
   res.json({'message': 'ping'});
 });
 
+function sleep(milisecs){
+    var initiation = new Date().getTime();
+    while ( ( new Date().getTime()-initiation)<milisecs){
+
+    }
+}
+
 /* GET start feeding. */
 router.get('/start', function(req, res, next) {
+
     console.info('message:',req.body);
     motor.servoWrite(pulseWidth);
     console.info('motor started');
     pulseWidth += increment;
-    motor.servoWrite(pulseWidth);
+    sleep(1000);
+    motor.servoWrite(1200);
     console.info('pulseWidth', pulseWidth, increment);
-    if (pulseWidth >= 1200) {
-        increment = -200;
-        pulseWidth+=increment;
-        motor.servoWrite(pulseWidth);
-    } else if (pulseWidth <= 1000){
-        increment = 200;
-        pulseWidth+=increment;
-        motor.servoWrite(pulseWidth);
-    }
+    sleep(1000);
+    motor.servoWrite(1000);
+
+
+
+    /*if (pulseWidth >= */1200) {
+    /*    increment = -2*/00;
+    /*} else if (pulseWi*/dth <= 1000){
+    /*    increment = 20*/0;
+    /*}*/
 
 
     res.json({message: 'started'});
