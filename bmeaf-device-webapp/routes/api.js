@@ -23,14 +23,17 @@ router.get('/ping', function(req, res, next) {
 router.get('/start', function(req, res, next) {
     console.info('message:',req.body);
     motor.servoWrite(pulseWidth);
+    motor.wait(1000);
     console.info('motor started');
+    console.info('pulseWidth', pulseWidth, increment);
      pulseWidth += increment;
+    motor.wait(1000);
+    console.info('pulseWidth', pulseWidth, increment);
      motor.servoWrite(pulseWidth);
-
      pulseWidth-=increment;
      console.info('pulseWidth', pulseWidth, increment);
      motor.servoWrite(pulseWidth);
-
+    motor.wait(1000);
    /* if (pulseWidth >= 1200) {*/
    /*    increment = -200;*/
    /*  } else if (pulseWidth <= 1000){*/
