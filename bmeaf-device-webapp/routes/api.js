@@ -26,7 +26,7 @@ router.get('/start', function(req, res, next) {
     console.info('motor started');
      pulseWidth += increment;
      console.info('pulseWidth', pulseWidth, increment);
-    if (pulseWidth >= 1500) {
+    if (pulseWidth >= 1000) {
        increment = -500;
      } else if (pulseWidth <= 0){
          increment = 500;
