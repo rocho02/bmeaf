@@ -30,9 +30,8 @@ function sleep(milisecs){
 router.get('/start', function(req, res, next) {
 
     console.info('message:',req.body);
-    motor.servoWrite(pulseWidth);
+    motor.servoWrite(1000);
     console.info('motor started');
-    pulseWidth += increment;
     console.info('pulseWidth', pulseWidth, increment);
     sleep(1000);
     motor.servoWrite(1200);
