@@ -25,13 +25,14 @@ router.get('/start', function(req, res, next) {
     motor.servoWrite(pulseWidth);
     console.info('motor started');
     pulseWidth += increment;
+    motor.servoWrite(pulseWidth);
     console.info('pulseWidth', pulseWidth, increment);
-    if (pulseWidth >= 1200) {
+  /*  if (pulseWidth >= 1200) {
         increment = -200;
     } else if (pulseWidth <= 1000){
         increment = 200;
     }
- 
+*/
 
     res.json({message: 'started'});
 });
