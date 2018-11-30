@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var request = require("request");
 var HttpStatus = require('http-status-codes');
+const feedingService = require("../feeding.service");
 
 const restPath = 'http://192.168.0.88:3001/api/';
 
@@ -67,6 +68,49 @@ router.post('/message/',function (req,res) {
             break;
     }
 });
+
+router.get('/db/read/',function (req,res) {
+    feedingService.findAll().subscribe(
+       value => {
+           res.json(value);
+       },
+        err => {
+           res.status(500);
+           res.json({'err' : err})
+        }
+    );
+
+});
+
+router.get('/db/read/last',function (req,res) {
+    feedingService.findLastFeeding().subscribe(
+        value => {
+            let date = null;
+            if ( value && value.length && value.length > 0 ){
+                date = new Date(value[0].feeding_time);
+            }
+            res.json( {date: date} );
+        },
+        err => {
+            res.status(500);
+            res.json({'err' : err})
+        }
+    );
+});
+
+
+router.get('/db/write/',function (req,res) {
+    feedingService.create().subscribe(
+        value => {
+            res.json(value);
+        },
+        err => {
+            res.status(500);
+            res.json({'err' : err})
+        }
+    );
+});
+
 
 
 
