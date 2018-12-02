@@ -4,7 +4,7 @@ var request = require("request");
 var HttpStatus = require('http-status-codes');
 const feedingService = require("../feeding.service");
 
-const restPath = 'http://192.168.0.88:3001/api/';
+const restPath = 'http://192.168.43.188:3001/api/';
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -23,11 +23,15 @@ function start(req,res){
             var resultsObj = JSON.parse(_body);
             // Just an example of how to access properties:
             console.log(resultsObj);
+
             res.json({'message': 'start ready'});
         }else{
             res.status(HttpStatus.INTERNAL_SERVER_ERROR);
             res.json({'message': 'start failed'});
         }
+
+
+
         console.info("start finished")
     });
 }
@@ -49,6 +53,9 @@ function stop(req,res){
             res.status(HttpStatus.INTERNAL_SERVER_ERROR);
             res.json({'message': 'start failed'});
         }
+
+
+
         console.info("stop finished")
     });
     console.info("stop published");
@@ -61,9 +68,11 @@ router.post('/message/',function (req,res) {
     const message = req.body.message;
     switch (message) {
         case 'start':
+            feedingService.create().subscribe();
            start(req,res);
             break;
         case 'stop':
+            feedingService.create().subscribe();
             stop(req,res);
             break;
     }
