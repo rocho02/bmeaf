@@ -32,18 +32,13 @@ router.get('/start', function(req, res, next) {
 
         motor.servoWrite(1000);
      console.info('message:',req.body);
- /* console.info('motor started');
-    console.info('pulseWidth', pulseWidth, increment);*/
 
-    motor.servoWrite(1200);
+
+    motor.servoWrite(1500);
     sleep(1000);
     motor.servoWrite(1000);
 
-    /*if (pulseWidth >= 1200) {
-        increment = -200;
-    } else if (pulseWidth <= 1000){
-        increment = 200;
-    }*/
+
 
 
     res.json({message: 'started'});
@@ -54,7 +49,7 @@ router.get('/stop', function(req, res, next) {
     console.info('message:',req.body);
     /*res.json({message: 'stopped'});*/
     motor.servoWrite(1000);
-    motor.servoWrite(1200);
+    motor.servoWrite(1500);
     sleep(2000);
     motor.servoWrite(1000);
 
