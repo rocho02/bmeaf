@@ -34,7 +34,7 @@ router.get('/start', function(req, res, next) {
      console.info('message:',req.body);
 
 
-    motor.servoWrite(1400);
+    motor.servoWrite(1300);
     sleep(1000);
     motor.servoWrite(1000);
 
@@ -49,7 +49,7 @@ router.get('/stop', function(req, res, next) {
     console.info('message:',req.body);
     /*res.json({message: 'stopped'});*/
     motor.servoWrite(1000);
-    motor.servoWrite(1400);
+    motor.servoWrite(1300);
     sleep(2000);
     motor.servoWrite(1000);
 
